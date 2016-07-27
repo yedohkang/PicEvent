@@ -7,7 +7,7 @@ var dataURItoBlob = function(dataURI) {
         byteString = unescape(dataURI.split(',')[1]);
 	console.log(dataURI);
     // separate out the mime component
-    //var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
     // write the bytes of the string to a typed array
     var ia = new Uint8Array(byteString.length);
@@ -15,7 +15,7 @@ var dataURItoBlob = function(dataURI) {
         ia[i] = byteString.charCodeAt(i);
     }
 
-    return new Blob([ia], {type:"image/jpeg"});
+    return new Blob([ia], {type:mimeString});
 }
 
 var datatoBlob = function(byteString) {
@@ -29,7 +29,6 @@ var datatoBlob = function(byteString) {
 
 var parseImage = function(image){
 	//Prepare form data
-	console.log("we are sending image data " + image);
 	var formData = new FormData();
 	formData.append("file", image, "image.jpg");
     
@@ -61,7 +60,6 @@ var parseImage = function(image){
 
 			//If we have got parsed results, then loop over the results to do something
 			if (parsedResults!= null) {
-				console.log("We got results");
 				//Loop through the parsed results
 				$.each(parsedResults, function (index, value) {
 					var exitCode = value["FileParseExitCode"];
@@ -109,7 +107,8 @@ angular.module('app.controllers', [])
 
 	      Camera.getPicture(options).then(function(imageData) {
 	         $scope.picture = imageData;
-			 parseImage(dataURItoBlob(imageData));
+			 var imageURI = "data:image/jpeg;base64," + imageData;
+			 parseImage(dataURItoBlob(imageURI));
 	      }, function(err) {
 	         console.log(err);
 	      });
@@ -127,9 +126,9 @@ angular.module('app.controllers', [])
 	         };
 
 	         Camera.getPicture(options).then(function(imageData) {
-				 console.log("hello");
 	            $scope.picture = imageData;;
-				parseImage(dataURItoBlob(imageData));
+				var imageURI = "data:image/jpeg;base64," + imageData;
+				parseImage(dataURItoBlob(imageURI));
 	         }, function(err) {
 	            console.log(err);
 	         });
