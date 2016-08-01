@@ -135,10 +135,41 @@ angular.module('app.controllers', [])
 	      }; 
 		  
 		  $scope.parseImage = parseImage;
+		  
+		  //$scope.gotocalendar = handleAuthClick;
+		  
 	  
 })
    
-.controller('addEventCtrl', function($scope) {
+.controller('addEventCtrl', function($scope, $cordovaCalendar) {
+	
+	$scope.title = "testtitle";
+	$scope.location1 = "testlocation";
+	$scope.notes = "testnotes";
+	$scope.startdate = new Date(2016, 7, 1);
+	$scope.starttime = new Date();
+	$scope.starttime.setHours(18, 21);
+	$scope.enddate = new Date(2016, 7, 1);
+	$scope.endtime = new Date();
+	$scope.endtime.setHours(19, 21);
+	
+	
+    
+	$scope.createEvent = function(title, location1, notes, startdate, starttime, enddate, endtime){
+		console.log(endtime);
+	    $cordovaCalendar.createEvent({
+	      title: title,
+	      location: location1,
+	      notes: notes,
+		  startDate: new Date(startdate.getYear(), startdate.getMonth(), startdate.getDate(), starttime.getHours(), starttime.getMinutes()),
+	      endDate: new Date(enddate.getYear(), enddate.getMonth(), enddate.getDate(), endtime.getHours(), endtime.getMinutes())
+	    }).then(function (result) {
+	      // success
+	    }, function (err) {
+	      // error
+	    });
+	}
+	
 
 })
   
@@ -147,7 +178,8 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('loginCtrl', function($scope) {
+.controller('loginCtrl', function($scope, $cordovaOauth) {
+
 
 })
    

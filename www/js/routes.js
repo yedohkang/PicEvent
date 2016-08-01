@@ -10,7 +10,7 @@ angular.module('app.routes', [])
     
   
 
-      .state('home', {
+  .state('home', {
     url: '/page1',
     templateUrl: 'templates/home.html',
     controller: 'homeCtrl'
@@ -26,12 +26,6 @@ angular.module('app.routes', [])
     url: '/page9',
     templateUrl: 'templates/eventAdded.html',
     controller: 'eventAddedCtrl'
-  })
-
-  .state('login', {
-    url: '/page10',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
   })
 
   .state('loggedOut', {

@@ -6,23 +6,31 @@
             <div class="spacer" style="width: 300px; height: 11px;"></div>
             <label class="item item-input " id="addEvent-input10">
                 <span class="input-label">Name</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="title">
             </label>
             <label class="item item-input " id="addEvent-input11">
                 <span class="input-label">Location</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="location1">
             </label>
             <label class="item item-input " id="addEvent-input12">
-                <span class="input-label">Date</span>
-                <input type="text" placeholder="">
+                <span class="input-label">Start Date</span>
+                <input type="date" placeholder="" ng-model="startdate">
             </label>
             <label class="item item-input " id="addEvent-input13">
-                <span class="input-label">Time</span>
-                <input type="text" placeholder="">
+                <span class="input-label">Start Time</span>
+                <input type="time" placeholder="" ng-model="starttime">
             </label>
             <label class="item item-input " id="addEvent-input14">
+                <span class="input-label">End Date</span>
+                <input type="date" placeholder="" ng-model="enddate">
+            </label>
+            <label class="item item-input " id="addEvent-input15">
+                <span class="input-label">End Time</span>
+                <input type="time" placeholder="" ng-model="endtime">
+            </label>
+            <label class="item item-input " id="addEvent-input15">
                 <span class="input-label">Notes</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="notes">
             </label>
             <div class="spacer" style="width: 300px; height: 9px;"></div>
             <label class="item item-select " id="addEvent-select1">
@@ -33,6 +41,6 @@
                 </select>
             </label>
         </form>
-        <a ui-sref="eventAdded" id="addEvent-button7" class=" button button-dark  button-block ">Add Event</a>
+        <a ui-sref="eventAdded" id="addEvent-button7" class=" button button-dark  button-block " ng-click="createEvent(title, location1, notes, startdate, starttime, enddate, endtime)"> Add Event</a>
     </ion-content>
 </ion-view>

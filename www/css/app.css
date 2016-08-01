@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'trashhand';
+	src: url("TrashHand.TTF");
+	
+}
+#home-heading1{
+	font-family:'trashhand';
+}
+
