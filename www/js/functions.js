@@ -1,7 +1,13 @@
 var parsedString;
 var dateString = "";
 var now = moment();
+var month;
+var day;
+var year;
 var timeString = "";
+var hour;
+var minute;
+var daynight;
 var locationString = " ";
 var knwl = new Knwl("english");
 
@@ -10,25 +16,42 @@ var parseDate = function(parsedString){
   knwl.init(parsedString);
   var dateArray = knwl.get('dates');
   var dateObject = dateArray[0];
-  var month;
-  var day;
-  var year;
-  if(dateObject.month == "unknown"){
+  if(dateObject == null){
     month = now.month();
-  }else{
-    month = dateObject.month;
-  }
-  if(dateObject.day == "unknown"){
     day = now.day();
-  }else{
-    day = dateObject.day;
-  }
-  if(dateObject.year == "unknown"){
     year = now.year();
   }else{
-    year = dateObject.year;
+    if(dateObject.month == "unknown"){
+      month = now.month();
+    }else{
+      month = dateObject.month;
+    }
+    if(dateObject.day == "unknown"){
+      day = now.day();
+    }else{
+      day = dateObject.day;
+    }
+    if(dateObject.year == "unknown"){
+      year = now.year();
+    }else{
+      year = dateObject.year;
+    }
   }
-  dateString = month + "/" + day + "/" + year;
+};
+
+var parseMonth = function(parsedString){
+  parseDate(parsedString);
+  return month;
+};
+
+var parseDay = function(parsedString){
+  parseDate(parsedString);
+  return day;
+};
+
+var parseYear = function(parsedString){
+  parseDate(parsedString);
+  return year;
 };
 
 // parse text for time
@@ -36,7 +59,42 @@ var parseTime = function(parsedString){
   knwl.init(parsedString);
   var timeArray = knwl.get('times');
   var timeObject = timeArray[0];
-  timeString = timeObject.hour + ":" + timeObject.minute + " " + timeObject.daynight;
+  if(timeObject == null){
+    hour = 12;
+    minute = 00;
+    daynight = "AM";
+  }else{
+    if(timeObject.hour == "unknown"){
+      hour = 12;
+    }else{
+      hour = timeObject.hour;
+    }
+    if(timeObject.minute == "unknown"){
+      minute = 00;
+    }else{
+      minute = timeObject.minute;
+    }
+    if(timeObject.daynight == "unknown"){
+      daynight = "AM";
+    }else{
+      daynight = timeObject.daynight;
+    }
+  }
+};
+
+var parseHour = function(parsedString){
+  parseTime(parsedString);
+  return hour;
+};
+
+var parseMinute = function(parsedString){
+  parseTime(parsedString);
+  return minute;
+};
+
+var parseDaynight = function(parsedString){
+  parseTime(parsedString);
+  return daynight;
 };
 
 // parse text for location
@@ -84,14 +142,5 @@ var parseLocation = function(parsedString){
       locationString = locationString + " " + words[indexSpecial];
     }
   }
-  console.log(locationString);
-};
-
-var parseString = function(parsedString){
-  parseDate(parsedString);
-  parseTime(parsedString);
-  parseLocation(parsedString);
-  console.log("Date: " + dateString);
-  console.log("Time: " + timeString);
-  console.log("Location: " + locationString);
+  return locationString;
 };
