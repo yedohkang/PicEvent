@@ -1,10 +1,8 @@
 var parsedString;
-var dateString = "";
 var now = moment();
 var month;
 var day;
 var year;
-var timeString = "";
 var hour;
 var minute;
 var daynight;
