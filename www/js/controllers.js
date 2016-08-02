@@ -141,7 +141,7 @@ angular.module('app.controllers', [])
 	  
 })
    
-.controller('addEventCtrl', function($scope, $cordovaCalendar) {
+.controller('addEventCtrl', function($scope, $cordovaCalendar, $ionicPopup) {
 	
 	$scope.title = "testtitle";
 	$scope.location1 = "testlocation";
@@ -156,16 +156,21 @@ angular.module('app.controllers', [])
 	
     
 	$scope.createEvent = function(title, location1, notes, startdate, starttime, enddate, endtime){
-		console.log(endtime);
+		var startDate = new Date(startdate.getFullYear(), startdate.getMonth(), startdate.getDate(), starttime.getHours(), starttime.getMinutes());
+		var endDate = new Date(enddate.getFullYear(), enddate.getMonth(), enddate.getDate(), endtime.getHours(), endtime.getMinutes());
 	    $cordovaCalendar.createEvent({
 	      title: title,
 	      location: location1,
 	      notes: notes,
-		  startDate: new Date(startdate.getYear(), startdate.getMonth(), startdate.getDate(), starttime.getHours(), starttime.getMinutes()),
-	      endDate: new Date(enddate.getYear(), enddate.getMonth(), enddate.getDate(), endtime.getHours(), endtime.getMinutes())
+		  startDate: startDate,
+	      endDate: endDate
 	    }).then(function (result) {
 	      // success
 	    }, function (err) {
+			$ionicPopup.alert({
+			     title: 'Error: ',
+			     template: err
+			   });
 	      // error
 	    });
 	}
