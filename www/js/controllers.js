@@ -15,7 +15,11 @@ angular.module('app.controllers', [])
 	      Camera.getPicture(options).then(function(imageData) {
 	         $scope.picture = imageData;
 			 var imageURI = "data:image/jpeg;base64," + imageData;
-			 OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
+			 var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
+			 promise.then(function success (response){
+				 ParsedText.setPageText(response);
+				 $state.go('addEvent');
+			 });
 	      }, function(err) {
 	         console.log(err);
 	      });

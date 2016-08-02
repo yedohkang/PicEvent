@@ -3,11 +3,8 @@
         <div class="spacer" style="width: 300px; height: 97px;"></div>
         <h1 id="home-heading1" style="color:#824185;font-weight:600;text-align:center;" class=" ">PicEvent</h1>
         <div class="spacer" style="width: 300px; height: 87px;"></div>
-        <a ui-sref="addEvent" id="home-button9" style="border-radius:2px 2px 2px 2px;" class=" button button-dark  button-block button-outline icon-left ion-camera " ng-click="takePicture()">Camera</a>
-        <a id="home-button16" class=" button button-positive  button-block button-outline icon-left ion-ios-photos-outline " ng-click="getPicture()">Choose From Gallery</a>
-        <a ui-sref="login" id="home-button13" class=" button button-balanced  button-block button-outline icon-left ion-social-google-outline ">Add a Google Account</a>
-		<button id="home-button13" ng-click="gotocalendar()" class=" button button-assertive  button-block button-outline icon-left ion-ios-calendar-outline ">View Google Calendar</button>
-		        <a ui-sref="loggedOut" id="home-button15" class=" button button-royal  button-block button-outline icon-left ion-android-exit ">Logout</a>
+        <a ui-sref="addEvent" id="home-button9" class=" button button-dark  button-block button-outline icon-center ion-camera " ng-click="takePicture()"></a>
+        <a id="home-button16" class=" button button-positive  button-block button-outline icon-center ion-ios-photos-outline " ng-click="getPicture()"></a>
 		<img ng-src = "{{user.picture}}">
     </ion-content>
 </ion-view>

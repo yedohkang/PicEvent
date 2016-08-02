@@ -33,13 +33,6 @@
                 <input type="text" placeholder="Notes" ng-model="notes">
             </label>
             <div class="spacer" style="width: 300px; height: 9px;"></div>
-            <label class="item item-select " id="addEvent-select1">
-                <span class="input-label">Select</span>
-                <select>
-                    <option>Google Calendar</option>
-                    <option>iOS Calendar</option>
-                </select>
-            </label>
         </form>
         <a ui-sref="eventAdded" id="addEvent-button7" class=" button button-dark  button-block " ng-click="createEvent(title, location1, notes, startdate, starttime, enddate, endtime)"> Add Event</a>
     </ion-content>
