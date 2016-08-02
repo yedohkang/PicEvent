@@ -5,7 +5,6 @@ var day;
 var year;
 var hour;
 var minute;
-var daynight;
 var locationString = " ";
 var knwl = new Knwl("english");
 
@@ -57,15 +56,16 @@ var parseTime = function(parsedString){
   knwl.init(parsedString);
   var timeArray = knwl.get('times');
   var timeObject = timeArray[0];
+  var daynight;
   if(timeObject == null){
-    hour = 12;
+    hour = 00;
     minute = 00;
     daynight = "AM";
   }else{
     if(timeObject.hour == "unknown"){
-      hour = 12;
+      hour = 00;
     }else{
-      hour = timeObject.hour;
+      hour = timeObject.hour - 1;
     }
     if(timeObject.minute == "unknown"){
       minute = 00;
@@ -78,6 +78,9 @@ var parseTime = function(parsedString){
       daynight = timeObject.daynight;
     }
   }
+  if(daynight == "PM"){
+    hour += 12;
+  }
 };
 
 var parseHour = function(parsedString){
@@ -88,11 +91,6 @@ var parseHour = function(parsedString){
 var parseMinute = function(parsedString){
   parseTime(parsedString);
   return minute;
-};
-
-var parseDaynight = function(parsedString){
-  parseTime(parsedString);
-  return daynight;
 };
 
 // parse text for location
