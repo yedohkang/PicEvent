@@ -21,13 +21,13 @@ var parseDate = function(parsedString){
   var dateArray = knwl.get('dates');
   var dateObject = dateArray[0];
   if(dateObject !== null){
-    if(dateObject.month !== "unknown"){
+    if(dateObject.month != "unknown"){
       month = dateObject.month;
     }
-    if(dateObject.day !== "unknown"){
+    if(dateObject.day != "unknown"){
       day = dateObject.day;
     }
-    if(dateObject.year !== "unknown"){
+    if(dateObject.year != "unknown"){
       year = dateObject.year;
     }
   }
