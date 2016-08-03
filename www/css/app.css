@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'trashhand';
 	src: url("TrashHand.TTF");
-	
+
 }
 #home-heading1{
 	font-family:'trashhand';
@@ -14,7 +14,7 @@
     text-align: center;
     vertical-align: middle;
     line-height: 2em;
-    width: 200px;
+    width: 230px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -26,7 +26,7 @@
     text-align: center;
     vertical-align: middle;
     line-height: 2em;
-    width: 200px;
+    width: 230px;
     margin-left: auto;
     margin-right: auto;
 }
