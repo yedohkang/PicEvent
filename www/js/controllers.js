@@ -67,9 +67,11 @@ angular.module('app.controllers', [])
 	$scope.location1 = parseLocation (pageText);
 	$scope.notes = "";
 	$scope.startdate = new Date(parseYear(pageText), parseMonth(pageText), parseDay(pageText));
-	$scope.starttime = new Date(parseHour(pageText), parseMinute(pageText));
+	$scope.starttime = new Date();
+	$scope.starttime.setHours(parseHour(pageText), parseMinute(pageText));
 	$scope.enddate = new Date(parseYear(pageText), parseMonth(pageText), parseDay(pageText));
-	$scope.endtime = new Date(parseHour(pageText) + 1, parseMinute(pageText));
+	$scope.endtime = new Date();
+	$scope.endtime.setHours(parseHour(pageText) + 1, parseMinute(pageText));
 
 	console.log($scope.location1);
 	console.log($scope.startdate);
