@@ -56,7 +56,7 @@ var parseTime = function(parsedString){
   var daynight = "AM";
   if(timeObject !== null){
     if(timeObject.hour !== "unknown"){
-      hour = timObject.hour;
+      hour = timeObject.hour;
     }
     if(timeObject.minute !== "unknown"){
       minute = timeObject.minute;
@@ -82,6 +82,12 @@ var parseMinute = function(parsedString){
   parseTime(parsedString);
   return minute;
 };
+
+var endTime = function(parsedString){
+  parseTime(parsedString);
+  var endHour = hour + 1;
+  return endHour;
+}
 
 // parse text for location
 var parseLocation = function(parsedString){

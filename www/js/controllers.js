@@ -71,7 +71,7 @@ angular.module('app.controllers', [])
 	$scope.starttime.setHours(parseHour(pageText), parseMinute(pageText));
 	$scope.enddate = new Date(parseYear(pageText), parseMonth(pageText), parseDay(pageText));
 	$scope.endtime = new Date();
-	$scope.endtime.setHours(parseHour(pageText) + 1, parseMinute(pageText));
+	$scope.endtime.setHours(endTime(pageText), parseMinute(pageText));
 
 	console.log($scope.location1);
 	console.log($scope.startdate);
