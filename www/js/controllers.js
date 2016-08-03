@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-.controller('homeCtrl', function($scope, Camera, ParsedText, OCR, $state) {
+.controller('homeCtrl', function($scope, Camera, ParsedText, OCR, $state, $ionicLoading) {
 
 	   $scope.takePicture = function (options) {
 
@@ -36,6 +36,7 @@ angular.module('app.controllers', [])
 				 destinationType: 0
 	         };
 
+					 $ionicLoading.show();
 	         Camera.getPicture(options).then(function(imageData) {
 	            $scope.picture = imageData;;
 				var imageURI = "data:image/jpeg;base64," + imageData;
@@ -43,6 +44,7 @@ angular.module('app.controllers', [])
 				promise.then(function success (response){
 					ParsedText.setPageText(response);
 					$state.go('addEvent');
+					$ionicLoading.hide();
 				}
 			);
 	         }, function(err) {
