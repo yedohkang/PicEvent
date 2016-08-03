@@ -58,12 +58,12 @@ var parseTime = function(parsedString){
   var timeObject = timeArray[0];
   var daynight;
   if(timeObject == null){
-    hour = 00;
-    minute = 00;
+    hour = now.hour();
+    minute = now.minute();
     daynight = "AM";
   }else{
     if(timeObject.hour == "unknown"){
-      hour = 00;
+      hour = 12;
     }else{
       hour = timeObject.hour - 1;
     }
@@ -100,8 +100,9 @@ var parseLocation = function(parsedString){
   var words = shortParsedString.split(" ");
 
   var indexAddress = -1;
-  var streetTypes = ["street", "st", "avenue", "ave", "boulevard", "blvd", "drive", "driveway", "place", "pl", "parkway", "pkwy", "road", "rd"];
-  var indexRoom = words.indexOf("room");
+  var streetTypes = ["street", "st", "avenue", "ave", "boulevard", "blvd", "drive", "driveway", "place", "pl", "parkway", "pkwy", "road", "rd", "square", "sq"];
+  var indexRoom = -1;
+  var roomTypes = ["room", "rm"];
   var indexSpecial = -1;
   var specialTypes = ["cafeteria", "gym", "gymnasium", "basement"];
   for(i = 0; i < words.length; i++){
