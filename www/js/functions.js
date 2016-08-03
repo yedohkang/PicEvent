@@ -111,6 +111,11 @@ var parseLocation = function(parsedString){
         indexAddress = i;
       }
     }
+    for(r = 0; r < roomTypes; r++){
+      if(roomTypes[r] == words[i]){
+        indexRoom = i;
+      }
+    }
     for(k = 0; k < specialTypes.length; k++){
       if(specialTypes[k] == words[i]){
         indexSpecial = i;
@@ -141,3 +146,7 @@ var parseLocation = function(parsedString){
   }
   return locationString;
 };
+
+var makeDescription = function(parsedString){
+
+}
