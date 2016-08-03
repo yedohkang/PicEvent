@@ -1,9 +1,9 @@
 angular.module('app.controllers', [])
-  
+
 .controller('homeCtrl', function($scope, Camera, ParsedText, OCR, $state) {
 
 	   $scope.takePicture = function (options) {
-	
+
 	      var options = {
 	         quality : 75,
 	         targetWidth: 200,
@@ -23,11 +23,11 @@ angular.module('app.controllers', [])
 	      }, function(err) {
 	         console.log(err);
 	      });
-		
+
 	   };
-	   
+
 	   $scope.getPicture = function (options) {
-	
+
 	         var options = {
 	            quality : 75,
 	            targetWidth: 200,
@@ -48,15 +48,15 @@ angular.module('app.controllers', [])
 	         }, function(err) {
 	            console.log(err);
 	         });
-	      }; 
-		  
+	      };
+
 		 // $scope.parseImage = parseImage;
-		  
+
 		  //$scope.gotocalendar = handleAuthClick;
-		  
-	  
+
+
 })
-   
+
 .controller('addEventCtrl', function($scope, $cordovaCalendar, $ionicPopup, ParsedText) {
 	$scope.$on("$ionicView.beforeEnter", function(){
 	var pageText = ParsedText.getPageText();
@@ -66,25 +66,25 @@ angular.module('app.controllers', [])
 	$scope.notes = "";
 	$scope.startdate = new Date(parseYear(pageText), parseMonth(pageText) - 1, parseDay(pageText));
 	$scope.starttime = new Date();
-	$scope.starttime.setHours(parseHour(pageText) + 1, parseMinute(pageText));
+	$scope.starttime.setHours(parseHour(pageText), parseMinute(pageText));
 	$scope.enddate = new Date(parseYear(pageText), parseMonth(pageText) - 1, parseDay(pageText));
 	$scope.endtime = new Date();
-	$scope.endtime.setHours(parseHour(pageText) + 2, parseMinute(pageText));
-	
+	$scope.endtime.setHours(parseHour(pageText) + 1, parseMinute(pageText));
+
 	console.log($scope.location1);
 	console.log($scope.startdate);
 	console.log($scope.starttime);
 	console.log($scope.enddate);
 	console.log($scope.endtime);
-	
-	
+
+
 	/*
 		$scope.createEvent = function(){
 			var startDate = new Date($scope.startdate.getFullYear() ...)
 	}
-	
+
 	*/
-    
+
 	$scope.createEvent = function(title, location1, notes, startdate, starttime, enddate, endtime){
 		var startDate = new Date(startdate.getFullYear(), startdate.getMonth(), startdate.getDate(), starttime.getHours(), starttime.getMinutes());
 		var endDate = new Date(enddate.getFullYear(), enddate.getMonth(), enddate.getDate(), endtime.getHours(), endtime.getMinutes());
@@ -107,18 +107,17 @@ angular.module('app.controllers', [])
 });
 
 })
-  
-   
+
+
 .controller('eventAddedCtrl', function($scope) {
 
 })
-   
+
 .controller('loginCtrl', function($scope, $cordovaOauth) {
 
 
 })
-   
+
 .controller('loggedOutCtrl', function($scope) {
 
 })
- 
