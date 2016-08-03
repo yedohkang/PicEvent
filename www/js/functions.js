@@ -1,11 +1,18 @@
 var parsedString;
 var now = moment();
-var month;
-var day;
-var year;
-var hour;
-var minute;
+var month = now.month();
+var day = now.day();
+var year = now.year();
+var hour = 0;
+var minute = 0;
 var locationString = " ";
+var datePresent = "no";
+var monthPresent = "no";
+var dayPresent = "no";
+var yearPresent = "no";
+var timePresent = "no";
+var hourPresent = "no";
+var minutePresent = "no";
 var knwl = new Knwl("english");
 
 // parse text for date
@@ -13,24 +20,14 @@ var parseDate = function(parsedString){
   knwl.init(parsedString);
   var dateArray = knwl.get('dates');
   var dateObject = dateArray[0];
-  if(dateObject == null){
-    month = now.month();
-    day = now.day();
-    year = now.year();
-  }else{
-    if(dateObject.month == "unknown"){
-      month = now.month();
-    }else{
+  if(dateObject !== null){
+    if(dateObject.month !== "unknown"){
       month = dateObject.month;
     }
-    if(dateObject.day == "unknown"){
-      day = now.day();
-    }else{
+    if(dateObject.day !== "unknown"){
       day = dateObject.day;
     }
-    if(dateObject.year == "unknown"){
-      year = now.year();
-    }else{
+    if(dateObject.year !== "unknown"){
       year = dateObject.year;
     }
   }
@@ -56,29 +53,24 @@ var parseTime = function(parsedString){
   knwl.init(parsedString);
   var timeArray = knwl.get('times');
   var timeObject = timeArray[0];
-  var daynight;
-  if(timeObject == null){
-	hour = 12;
-    minute = 0;
-    daynight = "AM";
-  }else{
-    if(timeObject.hour == "unknown"){
-      hour = 12;
-    }else{
-      hour = timeObject.hour - 1;
+  var daynight = "AM";
+  if(timeObject !== null){
+    if(timeObject.hour !== "unknown"){
+      hour = 0;
     }
-    if(timeObject.minute == "unknown"){
+    if(timeObject.minute !== "unknown"){
       minute = 0;
-    }else{
-      minute = timeObject.minute;
     }
-    if(timeObject.daynight == "unknown"){
-      daynight = "AM";
-    }else{
+    if(timeObject.daynight !== "unknown"){
       daynight = timeObject.daynight;
     }
   }
-  if(daynight == "PM"){
+  if(hour == 12){
+    if(daynight == "AM"){
+      hour -= 12;
+    }
+  }
+  else if(daynight == "PM"){
     hour += 12;
   }
 };
@@ -148,5 +140,8 @@ var parseLocation = function(parsedString){
 };
 
 var makeDescription = function(parsedString){
+  var lowerCaseString = parsedString.toLowerCase();
+  var shortParsedString = lowerCaseString.replace(/\ +/g, " ");
+  var words = shortParsedString.split(" ");
 
 }
