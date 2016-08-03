@@ -54,7 +54,7 @@ var parseTime = function(parsedString){
   var timeArray = knwl.get('times');
   var timeObject = timeArray[0];
   var daynight = "AM";
-  if(timeObject !== null){
+  if(timeObject != null){
     if(timeObject.hour != "unknown"){
       hour = timeObject.hour;
     }
@@ -68,7 +68,7 @@ var parseTime = function(parsedString){
   if(daynight == "AM" && hour == 12){
     hour = 0;
   }
-  if(daynight == "PM" && hour !== 12){
+  if(daynight == "PM" && hour != 12){
     hour += 12;
   }
 };
