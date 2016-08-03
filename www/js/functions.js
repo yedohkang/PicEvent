@@ -56,21 +56,19 @@ var parseTime = function(parsedString){
   var daynight = "AM";
   if(timeObject !== null){
     if(timeObject.hour !== "unknown"){
-      hour = 0;
+      hour = timObject.hour;
     }
     if(timeObject.minute !== "unknown"){
-      minute = 0;
+      minute = timeObject.minute;
     }
     if(timeObject.daynight !== "unknown"){
       daynight = timeObject.daynight;
     }
   }
-  if(hour == 12){
-    if(daynight == "AM"){
-      hour -= 12;
-    }
+  if(daynight == "AM" && hour == 12){
+    hour = 0;
   }
-  else if(daynight == "PM"){
+  if(daynight == "PM" && hour !== 12){
     hour += 12;
   }
 };
