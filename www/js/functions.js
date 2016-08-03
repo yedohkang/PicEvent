@@ -58,8 +58,8 @@ var parseTime = function(parsedString){
   var timeObject = timeArray[0];
   var daynight;
   if(timeObject == null){
-    hour = now.hour();
-    minute = now.minute();
+	hour = 12;
+    minute = 0;
     daynight = "AM";
   }else{
     if(timeObject.hour == "unknown"){
@@ -68,7 +68,7 @@ var parseTime = function(parsedString){
       hour = timeObject.hour - 1;
     }
     if(timeObject.minute == "unknown"){
-      minute = 00;
+      minute = 0;
     }else{
       minute = timeObject.minute;
     }
