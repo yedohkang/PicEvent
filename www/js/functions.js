@@ -21,12 +21,12 @@ var parseDate = function(parsedString){
   var dateArray = knwl.get('dates');
   var dateObject = dateArray[0];
   if(dateObject == null){
-    month = now.month();
+    month = Number(now.month()) + 1;
     day = now.day();
     year = now.year();
   }else{
     if(dateObject.month == "unknown"){
-      month = now.month();
+      month = Number(now.month()) + 1;
     }else{
       month = dateObject.month;
     }
@@ -65,14 +65,14 @@ var parseTime = function(parsedString){
   var timeObject = timeArray[0];
   var daynight;
   if(timeObject == null){
-	  hour = 12;
+	hour = 12;
     minute = 0;
     daynight = "AM";
   }else{
     if(timeObject.hour == "unknown"){
       hour = 12;
     }else{
-      hour = timeObject.hour - 1;
+      hour = timeObject.hour;
     }
     if(timeObject.minute == "unknown"){
       minute = 0;
@@ -85,8 +85,14 @@ var parseTime = function(parsedString){
       daynight = timeObject.daynight;
     }
   }
-  if(daynight == "PM"){
-    hour += 12;
+  var numHour = Number(hour);
+  if(daynight == "AM" && hour == 12){
+	numHour -= 12;
+	hour = numHour;
+  }
+  if(daynight == "PM" && hour != 12){
+	numHour += 12;
+	hour = numHour;
   }
 };
 
@@ -98,6 +104,12 @@ var parseHour = function(parsedString){
 var parseMinute = function(parsedString){
   parseTime(parsedString);
   return minute;
+};
+
+var parseEndTime = function(parsedString){
+  parseTime(parsedString);
+  var endHour = Number(hour) + 1;
+  return endHour;
 };
 
 // parse text for location
@@ -129,7 +141,7 @@ var parseLocation = function(parsedString){
       }
     }
   }
-  if(indexAddress !== -1){
+  if(indexAddress != -1){
     var eastWest = words[indexAddress -2];
     if(eastWest == "e" || eastWest == "w" || eastWest == "east" || eastWest == "west"){
       locationString = words[indexAddress - 3] + " " + words[indexAddress - 2] + " " + words[indexAddress - 1] + " " + words[indexAddress];
@@ -137,14 +149,14 @@ var parseLocation = function(parsedString){
       locationString = words[indexAddress - 2] + " " + words[indexAddress - 1] + " " + words[indexAddress];
     }
   }
-  if(indexRoom !== -1){
+  if(indexRoom != -1){
     if(locationString.charAt(0) == " "){
       locationString = words[indexRoom] + " " + words[indexRoom + 1];
     }else{
       locationString = locationString + " " + words[indexRoom] + " " + words[indexRoom + 1];
     }
   }
-  if(indexSpecial !== -1){
+  if(indexSpecial != -1){
     if(locationString.charAt(0) == " "){
       locationString = words[indexSpecial];
     }else{
@@ -155,8 +167,10 @@ var parseLocation = function(parsedString){
 };
 
 var makeDescription = function(parsedString){
-  var lowerCaseString = parsedString.toLowerCase();
-  var shortParsedString = lowerCaseString.replace(/\ +/g, " ");
-  var words = shortParsedString.split(" ");
-
-}
+  var shortParsedString = parsedString.replace(/\ +/g, " ");
+  if(shortParsedString == "Error: undefined"){
+  	shortParsedString = ""
+  }
+  console.log(shortParsedString);
+  return shortParsedString;
+};

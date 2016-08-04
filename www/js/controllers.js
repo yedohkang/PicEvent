@@ -62,16 +62,16 @@ angular.module('app.controllers', [])
 .controller('addEventCtrl', function($scope, $cordovaCalendar, $ionicPopup, ParsedText) {
 	$scope.$on("$ionicView.beforeEnter", function(){
 	var pageText = ParsedText.getPageText();
-	console.log("in addevent ctrl" + pageText);
+	console.log("in addevent ctrl: " + pageText);
 	$scope.title = "";
-	$scope.location1 = parseLocation (pageText);
-	$scope.notes = "";
+	$scope.location1 = parseLocation(pageText);
+	$scope.notes = makeDescription(pageText);
 	$scope.startdate = new Date(parseYear(pageText), parseMonth(pageText) - 1, parseDay(pageText));
 	$scope.starttime = new Date();
 	$scope.starttime.setHours(parseHour(pageText), parseMinute(pageText));
 	$scope.enddate = new Date(parseYear(pageText), parseMonth(pageText) - 1, parseDay(pageText));
 	$scope.endtime = new Date();
-	$scope.endtime.setHours(endTime(pageText), parseMinute(pageText));
+	$scope.endtime.setHours(parseEndTime(pageText), parseMinute(pageText));
 
 	console.log($scope.location1);
 	console.log($scope.startdate);
@@ -90,7 +90,7 @@ angular.module('app.controllers', [])
 	$scope.createEvent = function(title, location1, notes, startdate, starttime, enddate, endtime){
 		var startDate = new Date(startdate.getFullYear(), startdate.getMonth(), startdate.getDate(), starttime.getHours(), starttime.getMinutes());
 		var endDate = new Date(enddate.getFullYear(), enddate.getMonth(), enddate.getDate(), endtime.getHours(), endtime.getMinutes());
-	    $cordovaCalendar.createEvent({
+		$cordovaCalendar.createEvent({
 	      title: title,
 	      location: location1,
 	      notes: notes,
@@ -102,7 +102,7 @@ angular.module('app.controllers', [])
 			$ionicPopup.alert({
 			     title: 'Error: ',
 			     template: err
-			   });
+			});
 	      // error
 	    });
 	}
