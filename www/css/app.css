@@ -4,7 +4,10 @@
 }
 
 .home{
-  background-image: url("../img/background.png")
+  background-image: url("../img/background.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
 }
 
 #home-heading1{
@@ -12,27 +15,28 @@
 }
 
 #home-button9{
-    font-size: 60px;
+    font-size: 40px;
     border-radius: 10px 10px 10px 10px;
-    height: 110px;
+    height: 60px;
     text-align: center;
     vertical-align: middle;
-    line-height: 1.75em;
-    width: 180px;
+    line-height: 1.4em;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #home-button16{
-    font-size: 60px;
+    font-size: 40px;
     border-radius: 10px 10px 10px 10px;
-    height: 110px;
+    height: 60px;
     text-align: center;
     vertical-align: middle;
-    line-height: 1.75em;
-    width: 180px;
+    line-height: 1.4em;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #a8db7f
 }
 
 #eventAdded-button17{
