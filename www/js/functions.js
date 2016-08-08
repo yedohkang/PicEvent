@@ -119,7 +119,9 @@ var parseLocation = function(parsedString){
   var words = shortParsedString.split(" ");
 
   var indexAddress = -1;
-  var streetTypes = ["street", "st", "avenue", "ave", "boulevard", "blvd", "drive", "driveway", "place", "pl", "parkway", "pkwy", "road", "rd", "square", "sq"];
+  var streetTypes = ["street", "st", "st.", "avenue", "ave", "ave.", "boulevard", "blvd", "blvd.",
+                    "drive", "driveway", "place", "pl", "pl.", "parkway", "pkwy", "pkwy.", "road",
+                    "rd", "rd.", "square", "sq", "sq.", "turnpike"];
   var indexRoom = -1;
   var roomTypes = ["room", "rm"];
   var indexSpecial = -1;
