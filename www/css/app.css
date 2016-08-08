@@ -1,8 +1,12 @@
 @font-face {
 	font-family: 'trashhand';
 	src: url("TrashHand.TTF");
-
 }
+
+.home{
+  background-image: url("../img/background.png")
+}
+
 #home-heading1{
 	font-family:'trashhand';
 }
