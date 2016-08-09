@@ -6,13 +6,6 @@ var year;
 var hour;
 var minute;
 var locationString = " ";
-var datePresent = "no";
-var monthPresent = "no";
-var dayPresent = "no";
-var yearPresent = "no";
-var timePresent = "no";
-var hourPresent = "no";
-var minutePresent = "no";
 var knwl = new Knwl("english");
 
 // parse text for date
