@@ -4,14 +4,14 @@
 }
 
 .home{
-  background-image: url("../img/photo.png”);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+  	background-image: url("../img/backgroundfinal.png");
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
 }
 
 #home-heading1{
-	font-family:'trashhand';
+		font-family:'trashhand';
 }
 
 #home-button9{
