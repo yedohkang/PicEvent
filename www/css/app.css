@@ -4,7 +4,7 @@
 }
 
 .home{
-  background-image: url("../img/photo.png");
+  background-image: url("../img/photo.png”);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -36,7 +36,7 @@
     width: 300px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #79f279
+    background-color: #67D467
 }
 
 #eventAdded-button17{
