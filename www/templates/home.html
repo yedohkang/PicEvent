@@ -3,9 +3,9 @@
         <div class="spacer" style="width: 300px; height: 150px;"></div>
         <h1 id="home-heading1" style="color:#000000;font-weight:600;text-align:center;font-size:70px" class=" ">PicEvent</h1>
         <div class="spacer" style="width: 300px; height: 200px;"></div>
-        <a ui-sref="addEvent" id="home-button9" class=" button button-dark button-block icon-center ion-camera " ng-click="takePicture()"></a>
+        <a ui-sref="home" id="home-button9" class=" button button-dark button-block icon-center ion-camera " ng-click="takePicture()"></a>
         <div class="spacer" style="width: 300px; height: 3px;"></div>
-        <a id="home-button16" class="button button-calm button-block icon-center ion-ios-photos " ng-click="getPicture()"></a>
+        <a ui-sref="home" id="home-button16" class="button button-calm button-block icon-center ion-ios-photos " ng-click="getPicture()"></a>
 		<img ng-src="{{user.picture}}">
     </ion-content>
 </ion-view>

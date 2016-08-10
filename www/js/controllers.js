@@ -9,53 +9,48 @@ angular.module('app.controllers', [])
 	         targetWidth: 200,
 	         targetHeight: 200,
 	         sourceType: 1,
-			  destinationType: 0
+			     destinationType: 0
 	      };
 
+				$ionicLoading.show();
 	      Camera.getPicture(options).then(function(imageData) {
 	         $scope.picture = imageData;
-			 var imageURI = "data:image/jpeg;base64," + imageData;
-			 var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
-			 promise.then(function success (response){
-				 ParsedText.setPageText(response);
-				 $state.go('addEvent');
-			 });
+			  	 var imageURI = "data:image/jpeg;base64," + imageData;
+			     var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
+			     promise.then(function success (response){
+				     ParsedText.setPageText(response);
+				     $state.go('addEvent');
+						 $ionicLoading.hide();
+			     });
 	      }, function(err) {
 	         console.log(err);
 	      });
-
 	   };
 
 	   $scope.getPicture = function (options) {
 
-	         var options = {
-	            quality : 75,
-	            targetWidth: 200,
-	            targetHeight: 200,
-	            sourceType: 0,
-				 destinationType: 0
-	         };
-
-					 $ionicLoading.show();
-	         Camera.getPicture(options).then(function(imageData) {
-	            $scope.picture = imageData;;
-				var imageURI = "data:image/jpeg;base64," + imageData;
-				var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
-				promise.then(function success (response){
-					ParsedText.setPageText(response);
-					$state.go('addEvent');
-					$ionicLoading.hide();
-				}
-			);
-	         }, function(err) {
-	            console.log(err);
-	         });
+	      var options = {
+	         quality : 75,
+	         targetWidth: 200,
+	         targetHeight: 200,
+	         sourceType: 0,
+				 	 destinationType: 0
 	      };
 
-		 // $scope.parseImage = parseImage;
-
-		  //$scope.gotocalendar = handleAuthClick;
-
+				$ionicLoading.show();
+	      Camera.getPicture(options).then(function(imageData) {
+	         $scope.picture = imageData;
+		  		 var imageURI = "data:image/jpeg;base64," + imageData;
+				   var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
+				   promise.then(function success (response){
+					   ParsedText.setPageText(response);
+					   $state.go('addEvent');
+					   $ionicLoading.hide();
+			     });
+	      }, function(err) {
+	         console.log(err);
+	      });
+	   };
 
 })
 
@@ -112,11 +107,6 @@ angular.module('app.controllers', [])
 
 
 .controller('eventAddedCtrl', function($scope) {
-
-})
-
-.controller('loginCtrl', function($scope, $cordovaOauth) {
-
 
 })
 
