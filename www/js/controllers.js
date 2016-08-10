@@ -19,9 +19,10 @@ angular.module('app.controllers', [])
 			  	 var imageURI = "data:image/jpeg;base64," + imageData;
 			     var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
 			     promise.then(function success (response){
+						 $ionicLoading.show();
 				     ParsedText.setPageText(response);
 				     $state.go('addEvent');
-					 $ionicLoading.hide();
+					   $ionicLoading.hide();
 			     });
 	      }, function(err) {
 	         console.log(err);
