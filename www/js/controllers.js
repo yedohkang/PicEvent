@@ -20,7 +20,7 @@ angular.module('app.controllers', [])
 			     promise.then(function success (response){
 				     ParsedText.setPageText(response);
 				     $state.go('addEvent');
-						 $ionicLoading.hide();
+					 $ionicLoading.hide();
 			     });
 	      }, function(err) {
 	         console.log(err);
