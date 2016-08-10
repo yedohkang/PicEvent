@@ -94,7 +94,7 @@ angular.module('app.controllers', [])
 	      title: title,
 	      location: location1,
 	      notes: notes,
-		  startDate: startDate,
+		  	startDate: startDate,
 	      endDate: endDate
 	    }).then(function (result) {
 	      // success

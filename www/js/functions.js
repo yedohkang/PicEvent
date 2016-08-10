@@ -1,5 +1,5 @@
 var parsedString;
-var now = moment();
+var now = new Date();
 var month;
 var day;
 var year;
@@ -14,22 +14,22 @@ var parseDate = function(parsedString){
   var dateArray = knwl.get('dates');
   var dateObject = dateArray[0];
   if(dateObject == null){
-    month = Number(now.month()) + 1;
-    day = now.day();
-    year = now.year();
+    month = Number(now.getMonth()) + 1;
+    day = now.getDate();
+    year = now.getFullYear();
   }else{
     if(dateObject.month == "unknown"){
-      month = Number(now.month()) + 1;
+      month = Number(now.getMonth()) + 1;
     }else{
-      month = dateObject.month;
+      month = Number(dateObject.month);
     }
     if(dateObject.day == "unknown"){
-      day = now.day();
+      day = now.getDate();
     }else{
       day = dateObject.day;
     }
     if(dateObject.year == "unknown"){
-      year = now.year();
+      year = now.getFullYear();
     }else{
       year = dateObject.year;
     }
