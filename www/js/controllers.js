@@ -14,6 +14,7 @@ angular.module('app.controllers', [])
 
 				$ionicLoading.show();
 	      Camera.getPicture(options).then(function(imageData) {
+					 $ionicLoading.show();
 	         $scope.picture = imageData;
 			  	 var imageURI = "data:image/jpeg;base64," + imageData;
 			     var promise = OCR.parseImage(OCR.dataURItoBlob(imageURI), ParsedText);
