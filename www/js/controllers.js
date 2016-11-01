@@ -58,7 +58,6 @@ angular.module('app.controllers', [])
 .controller('addEventCtrl', function($scope, $cordovaCalendar, $ionicPopup, ParsedText) {
 	$scope.$on("$ionicView.beforeEnter", function(){
 	var pageText = ParsedText.getPageText();
-	console.log("in addevent ctrl: " + pageText);
 	$scope.title = "";
 	$scope.location1 = parseLocation(pageText);
 	$scope.notes = makeDescription(pageText);
@@ -68,20 +67,6 @@ angular.module('app.controllers', [])
 	$scope.enddate = new Date(parseYear(pageText), parseMonth(pageText) - 1, parseDay(pageText));
 	$scope.endtime = new Date();
 	$scope.endtime.setHours(parseEndTime(pageText), parseMinute(pageText));
-
-	console.log($scope.location1);
-	console.log($scope.startdate);
-	console.log($scope.starttime);
-	console.log($scope.enddate);
-	console.log($scope.endtime);
-
-
-	/*
-		$scope.createEvent = function(){
-			var startDate = new Date($scope.startdate.getFullYear() ...)
-	}
-
-	*/
 
 	$scope.createEvent = function(title, location1, notes, startdate, starttime, enddate, endtime){
 		var startDate = new Date(startdate.getFullYear(), startdate.getMonth(), startdate.getDate(), starttime.getHours(), starttime.getMinutes());
