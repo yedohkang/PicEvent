@@ -1,25 +1,6 @@
-Ionic App Base
-=====================
+# PicEvent
+## An app created by a group of four students (Justin Chang, Yedoh Kang, Austin Conte, Kamrul Hossain) in the Cooper Union Summer STEM Program
+### PicEvent is an app that lets users quickly and easily add events to the phone's calendar using the camera or existing photos of event flyers without manually entering in all the information.
+#### Users can take a picture of a flier for an event or choose an existing photo, and will be led to a page where they can edit the already entered in information by the app. When the information pleases the user, they can press the “Add Event” button and the event will be created in the phone’s iOS calendar.
 
-A starting project for Ionic that optionally supports using custom SCSS.
-
-## Using this project
-
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
-
-```bash
-$ npm install -g ionic
-```
-
-Then run: 
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+### For more info: picevent.wordpress.com
