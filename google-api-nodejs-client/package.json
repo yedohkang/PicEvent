@@ -68,7 +68,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "codecov": "^1.0.1",
+    "codecov": "^3.6.5",
     "ink-docstrap": "1.2.1",
     "istanbul": "^0.4.2",
     "js-beautify": "^1.6.3",
